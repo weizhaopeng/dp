@@ -1,32 +1,14 @@
-package dp.decorate.decorate;
-import dp.decorate.beverage.*;
+package decorate.condiment;
+import decorate.beverage.*;
 
 public abstract class Condiment extends Beverage {
-	private Beverage beverage;
+    Beverage beverage;
 
-	Condiment(Beverage b) {
-		this.beverage = b;
-	}
+	public abstract String getDescription();
 
-	abstract String getDescription();
-}
-
-class ZhenZhu extends Condiment {
-	String getDescription() {
-		return(beverage.getDescription+", +zhenzhu");
-	}
-}
-
-class YeGuo extends Condiment{
-	String getDescription() {
-		return(beverage.getDescription+", +yeguo");
-	}
-}
-
-class BuDing extends Condiment {
-	String getDescription() {
-		return(beverage.getDescription+", +buding");
-	}
+    public double cost() {
+        return(beverage.cost()+2);
+    }
 }
 
 

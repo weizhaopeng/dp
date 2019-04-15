@@ -1,4 +1,4 @@
-package dp.observer;
+package observer;
 
 public class User implements Observer, Display {
 	private WeatherData wd;

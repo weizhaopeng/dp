@@ -1,4 +1,5 @@
-package dp.strategy;
+package strategy;
+
 interface QuackInter {
 	void quack();
 }

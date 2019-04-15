@@ -1,4 +1,4 @@
-package dp.observer;
+package observer;
 import  java.util.*;
 
 interface Subject {

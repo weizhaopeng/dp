@@ -1,12 +1,12 @@
-package dp.observer;
+package observer;
 import java.util.*;
 
 public class Data implements Subject {
-	private ArrayList observers;
+	private ArrayList observers = new ArrayList();
 	private WeatherData wd;
 		
-	Data () {
-		wd = new WeatherData();
+	public Data() {
+        wd = new WeatherData();
 	}
 
 	//TODO:without the konwledge of ArrayList, need learn	
@@ -29,10 +29,15 @@ public class Data implements Subject {
 			return false;
 	}
 
-	public void notifyObservers() {
+	public void notifyObservers() throws NullPointerException {
 		for (int i = 0; i < observers.size(); i++) {
-			Observer obs = (Observer)observers.get(i);
-			obs.update(wd);
+			try {
+				Observer obs = (Observer) observers.get(i);
+				obs.update(wd);
+			}
+			catch (Exception ex) {
+				System.out.println("无效");
+			}
 		}
 	}
 	

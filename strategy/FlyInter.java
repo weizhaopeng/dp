@@ -1,4 +1,4 @@
-package dp.strategy;
+package strategy;
 
 interface FlyInter {
 	void fly();
