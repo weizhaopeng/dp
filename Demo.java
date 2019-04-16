@@ -33,6 +33,9 @@ public class Demo {
 
         //观察者模式
         Data d = new Data();
+        User u = new User();
+        //在d中的ArrayList中进行注册
+        d.addObserver(u);
 
         d.setChange(1, 2, 3);
         d.setChange(12, 33, 44);

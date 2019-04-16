@@ -1,10 +1,13 @@
 package observer;
 
 public class User implements Observer, Display {
-	private WeatherData wd;
+	private WeatherData wd = new WeatherData();
+
 	public void update(Object o) {
 		if (o instanceof WeatherData) {
-			wd = (WeatherData)o;
+			wd.setHumidity(((WeatherData) o).getHumidity());
+			wd.setTemperature(((WeatherData) o).getTemperature());
+			wd.setWindSpeed(((WeatherData) o).getWindSpeed());
 			displayData(wd);
 		}
 	}
