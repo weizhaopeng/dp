@@ -1,6 +1,11 @@
 import decorate.beverage.*;
 import decorate.capiaity.*;
 import decorate.condiment.*;
+import factory.material_factory.MaterialFactory;
+import factory.material_factory.NYMaterialFactory;
+import factory.pizza.Pizza;
+import factory.pizza_store.NYPizzaStore;
+import factory.pizza_store.PizzaStore;
 import observer.*;
 import strategy.*;
 
@@ -44,6 +49,12 @@ public class Demo {
 		Beverage coffee = new BigCap(new YeGuo(new Coffee()));
 		System.out.println(coffee.getDescription());
 		System.out.println(coffee.cost());
+
+		//工厂模式
+		MaterialFactory mf = new NYMaterialFactory();
+		PizzaStore ps = new NYPizzaStore(mf);
+		Pizza pizzaOrdered = ps.orderPizza(2);
+		pizzaOrdered.printDetail();
 	}
 }
 
