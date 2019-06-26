@@ -1,3 +1,10 @@
+import command.commands.Command;
+import command.commands.ComputerCommand;
+import command.commands.LightCommand;
+import command.controler.Controler;
+import command.device.Computer;
+import command.device.Device;
+import command.device.Light;
 import decorate.beverage.*;
 import decorate.capiaity.*;
 import decorate.condiment.*;
@@ -55,6 +62,21 @@ public class Demo {
 		PizzaStore ps = new NYPizzaStore(mf);
 		Pizza pizzaOrdered = ps.orderPizza(2);
 		pizzaOrdered.printDetail();
+
+		//命令模式
+        Device light = new Light(),
+                computer = new Computer();
+        Command lightCommand = new LightCommand(light),
+                computerCommand = new ComputerCommand(computer);
+        Controler controler = new Controler(lightCommand, computerCommand);
+
+        controler.lightOn();
+        controler.lightOff();
+        controler.computerOff();
+        controler.computerOn();
+        controler.computerStandBy();
+
+        controler.undo();
 	}
 }
 
