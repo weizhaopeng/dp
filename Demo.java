@@ -1,3 +1,6 @@
+import adapter.InformationAdapter;
+import adapter.InformationFormat;
+import adapter.InformationSubmit;
 import command.commands.Command;
 import command.commands.ComputerCommand;
 import command.commands.LightCommand;
@@ -8,6 +11,8 @@ import command.device.Light;
 import decorate.beverage.*;
 import decorate.capiaity.*;
 import decorate.condiment.*;
+import facade.hotel.Hotel;
+import facade.hotel.RujiaHotelfacade;
 import factory.material_factory.MaterialFactory;
 import factory.material_factory.NYMaterialFactory;
 import factory.pizza.Pizza;
@@ -77,7 +82,25 @@ public class Demo {
         controler.computerStandBy();
 
         controler.undo();
-	}
+        //适配器模式
+        InformationSubmit infoS = new InformationSubmit(
+                "weizhaopeng",
+                "123456",
+                24,
+                "江苏省南京市江宁区",
+                "18851755120");
+
+        InformationFormat infoF = new InformationAdapter(infoS);
+        System.out.println("用户数据：\n"+infoF.getInformation());
+
+        //外观模式
+        Hotel h = new RujiaHotelfacade();
+
+        if (h.orderRoom())
+            System.out.println("预定成功\n");
+        else
+            System.out.println("预定失败\n");
+    }
 }
 
 
